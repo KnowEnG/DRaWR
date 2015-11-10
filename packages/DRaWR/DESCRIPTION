@@ -1,0 +1,23 @@
+Package: DRaWR
+Title: Discriminative Random Walk with Restart
+Version: 0.0.0.9000
+Authors@R: person("Charles", "Blatti", email = "blatti@illinois.edu", role = c("aut", "cre"))
+Description: We present DRaWR, a network-based method for ranking genes or
+    properties related to a given gene set. Such related genes or properties are
+    identified from among the nodes of a large, heterogeneous network of biological
+    information. Our method involves a random walk with restarts, performed on
+    an initial network with multiple node and edge types, preserving more of the
+    original, specific property information than current methods that operate
+    on homogeneous networks. In this first stage of our algorithm, we find the
+    properties that are the most relevant to the given gene set and extract a
+    subnetwork of the original network, comprising only the relevant properties. We
+    then rerank genes by their similarity to the given gene set, based on a second
+    random walk with restarts, performed on the above subnetwork.
+Depends:
+    R (>= 3.1.1)
+License: MIT + file LICENSE
+LazyData: true
+Imports:
+    Matrix,
+    ROCR
+RoxygenNote: 5.0.0.9000

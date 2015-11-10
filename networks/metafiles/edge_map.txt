@@ -1,0 +1,10 @@
+type#	edge_type	n1type	n2type	bestsc	worstsc	description
+0	spec	spec	gene	1	0	gene_of_species
+1	homol	gene	gene	10	2	ztransform_of_eValue_of_protein_sequence_similarity
+2	geneTerr	uni_feat	gene	10000000	0	length_of_gene_terr
+3	motif_u5	uni_feat	gene	10	2	ztransform_of_best_motif_rank_in_5kb_ustream_of_gene
+4	pfam_domain	uni_feat	gene	10	1	ztransform_of_eValue_of_domain_match
+5	chip_binding	sp_spec	gene	10	2	ztransform_of_best_chip_peak_rank_in_5kb_ustream_of_gene
+6	gene_ontology	sp_spec	gene	1	1	membership_of_curated_GO
+7	gene_ontology	sp_spec	gene	2	1	membership_of_curated_or_inferred_GO
+8	allen_brain_atlas	sp_spec	gene	1	1	membership_in_top100_tissue_specific_expression_from_allen_brain_atlas
