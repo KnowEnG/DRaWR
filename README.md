@@ -16,6 +16,7 @@ We present DRaWR, a network-based method for ranking genes or properties related
 Clone this repository
 ```
 git clone https://github.com/cblatti3/DRaWR.git
+```
 
 Enter the repository and install packages into a local library
 ```

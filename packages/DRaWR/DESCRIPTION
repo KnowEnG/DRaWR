@@ -14,7 +14,7 @@ Description: We present DRaWR, a network-based method for ranking genes or
     then rerank genes by their similarity to the given gene set, based on a second
     random walk with restarts, performed on the above subnetwork.
 Depends:
-    R (>= 3.1.1)
+    R (>= 3.0)
 License: MIT + file LICENSE
 LazyData: true
 Imports:
