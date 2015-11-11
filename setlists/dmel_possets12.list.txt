@@ -1,0 +1,12 @@
+../gene_sets/dmel/2270_procephalic_ectoderm_anlage_in_statu_nascendi.names.txt
+../gene_sets/dmel/2275_ventral_ectoderm_anlage_in_statu_nascendi.names.txt
+../gene_sets/dmel/2279_dorsal_ectoderm_anlage_in_statu_nascendi.names.txt
+../gene_sets/dmel/4176_dorsal_ectoderm_primordium.names.txt
+../gene_sets/dmel/4221_procephalic_ectoderm_primordium.names.txt
+../gene_sets/dmel/4227_ventral_ectoderm_primordium.names.txt
+../gene_sets/dmel/5155_ventral_epidermis_primordium.names.txt
+../gene_sets/dmel/5268_brain_primordium.names.txt
+../gene_sets/dmel/5280_dorsal_epidermis_primordium.names.txt
+../gene_sets/dmel/5340_ventral_nerve_cord_primordium.names.txt
+../gene_sets/dmel/6047_embryonic_ventral_epidermis.names.txt
+../gene_sets/dmel/6069_embryonic_dorsal_epidermis.names.txt
