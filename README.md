@@ -199,10 +199,10 @@ DRaWR(possetfile = "setlists/3sps.fdr.1.list.txt",
 Simple example no cross validation
 ```
 Rscript -e ".libPaths(\"library\"); library(\"DRaWR\"); \
-    DRaWR(possetfile = \"DRaWR/data/sample_inputs/test.setlist\", \
-    unifile = \"DRaWR/data/sample_inputs/test.uni\", \
-    networkfile = \"DRaWR/data/sample_inputs/test.edge\", \
-    outdir = \"DRaWR/data/sample_outputs/cli_results_\", \
+    DRaWR(possetfile = \"packages/DRaWR/data/sample_inputs/test.setlist\", \
+    unifile = \"packages/DRaWR/data/sample_inputs/test.uni\", \
+    networkfile = \"packages/DRaWR/data/sample_inputs/test.edge\", \
+    outdir = \"packages/DRaWR/data/sample_outputs/cli_results_\", \
     restarts = c(.3), nfolds = 1, st2keep = 1, \
     undirected = TRUE, unweighted = FALSE, normalize = \"type\", \
     maxiters = 50, thresh = 0.000001, \
