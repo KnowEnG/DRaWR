@@ -33,6 +33,12 @@ R CMD INSTALL -l ./library packages/Matrix_1.2-2.tar.gz \
 R CMD INSTALL -l ./library packages/DRaWR/
 ```
 
+To use the 5 species networks
+```
+gunzip networks/5ins_cdhmw.names.edge.gz
+gunzip networks/5sp_adhiw.names.edge.gz
+```
+
 # Arguments
 ### Method Arguments
 #### relating to input files
@@ -149,49 +155,49 @@ library(DRaWR)
 
 Simple example no cross validation
 ```
-DRaWR(possetfile = "packages/DRaWR/data/sample_inputs/test.setlist", 
-    unifile = "packages/DRaWR/data/sample_inputs/test.uni", 
-    networkfile = "packages/DRaWR/data/sample_inputs/test.edge", 
-    outdir = "packages/DRaWR/data/sample_outputs/results_", 
-    restarts = c(.3), nfolds = 1, st2keep = 1, 
-    undirected = TRUE, unweighted = FALSE, normalize = "type", 
-    maxiters = 50, thresh = 0.000001, 
+DRaWR(possetfile = "packages/DRaWR/data/sample_inputs/test.setlist",
+    unifile = "packages/DRaWR/data/sample_inputs/test.uni",
+    networkfile = "packages/DRaWR/data/sample_inputs/test.edge",
+    outdir = "packages/DRaWR/data/sample_outputs/results_",
+    restarts = c(.3), nfolds = 1, st2keep = 1,
+    undirected = TRUE, unweighted = FALSE, normalize = "type",
+    maxiters = 50, thresh = 0.000001,
     property_types = c("T1", "T2"), writepreds = 1)
 ```
 
 12 fly gene sets with no cross validation
 ```
-DRaWR(possetfile = "setlists/dmel_possets12.list.txt", 
-    unifile = "gene_sets/universes/dmel.ids.uni.txt", 
-    networkfile = "networks/dmel_cdhmw.names.edge", 
-    outdir = "sample_results/", 
-    restarts = c(.3), nfolds = 1, st2keep = 50, 
-    undirected = TRUE, unweighted = FALSE, normalize = "type", 
-    maxiters = 50, thresh = 0.0001, 
+DRaWR(possetfile = "setlists/dmel_possets12.list.txt",
+    unifile = "gene_sets/universes/dmel.ids.uni.txt",
+    networkfile = "networks/dmel_cdhmw.names.edge",
+    outdir = "sample_results/",
+    restarts = c(.3), nfolds = 1, st2keep = 50,
+    undirected = TRUE, unweighted = FALSE, normalize = "type",
+    maxiters = 50, thresh = 0.0001,
     property_types = c("chip_binding", "motif_u5", "pfam_domain"), writepreds = 1)
 ```
 
 12 fly gene sets with 4fold cross validation
 ```
-DRaWR(possetfile = "setlists/dmel_possets12.list.txt", 
-    unifile = "gene_sets/universes/dmel.ids.uni.txt", 
-    networkfile = "networks/dmel_cdhmw.names.edge", 
-    outdir = "sample_results/", 
-    restarts = c(.3), nfolds = 4, st2keep = 50, 
-    undirected = TRUE, unweighted = FALSE, normalize = "type", 
-    maxiters = 50, thresh = 0.0001, 
+DRaWR(possetfile = "setlists/dmel_possets12.list.txt",
+    unifile = "gene_sets/universes/dmel.ids.uni.txt",
+    networkfile = "networks/dmel_cdhmw.names.edge",
+    outdir = "sample_results/",
+    restarts = c(.3), nfolds = 4, st2keep = 50,
+    undirected = TRUE, unweighted = FALSE, normalize = "type",
+    maxiters = 50, thresh = 0.0001,
     property_types = c("chip_binding", "motif_u5", "pfam_domain"), writepreds = 0)
 ```
 
 Combined aggression set on 5sp aggression network without cross validation
 ```
-DRaWR(possetfile = "setlists/3sps.fdr.1.list.txt", 
-    unifile = "gene_sets/universes/3sps_ids.uni.txt", 
-    networkfile = "networks/5sp_adhiw.names.edge", 
-    outdir = "sample_results/", 
-    restarts = c(.3), nfolds = 1, st2keep = 50, 
-    undirected = TRUE, unweighted = FALSE, normalize = "type", 
-    maxiters = 50, thresh = 0.0001, 
+DRaWR(possetfile = "setlists/3sps.fdr.1.list.txt",
+    unifile = "gene_sets/universes/3sps_ids.uni.txt",
+    networkfile = "networks/5sp_adhiw.names.edge",
+    outdir = "sample_results/",
+    restarts = c(.3), nfolds = 1, st2keep = 50,
+    undirected = TRUE, unweighted = FALSE, normalize = "type",
+    maxiters = 50, thresh = 0.0001,
     property_types = c("allen_brain_atlas", "gene_ontology","pfam_domain"), writepreds = 0)
 ```
 
