@@ -4,7 +4,7 @@
 #' @param a (vector): vector of source node names.
 #' @param b (vector): vector of target node names.
 #' @param c (vector): vector of edge weights names.
-#' @return sparce Matrix
+#' @return sparce Matrix.
 #' @keywords sparce matrix
 #' @export
 #' @examples
@@ -41,11 +41,11 @@ threeCol2MaxMat<- function(a = c("a","b","c","c"), b = c("a","b","b","b"), v = c
 #' @param a (vector): vector of source node names.
 #' @param b (vector): vector of target node names.
 #' @param c (vector): vector of edge weights names.
-#' @return list of vectors matrix representation
+#' @return list of vectors matrix representation.
 #' @keywords sparce matrix
 #' @export
 #' @examples
-#' threeCol2listMat(a = c("a","b","c","c"), b = c("a","b","b","b"), v = c(1,2,3,4), sym = 0)
+#' threeCol2listMat(a = c("a","b","c","c"), b = c("a","b","b","b"), v = c(1,2,3,4))
 threeCol2listMat<- function(a = c("a","b","c","c"), b = c("a","b","b","b"), v = c(1,2,3,4)){
 	if(length(a)!=length(b) | length(a)!=length(v)){
 		return(-1)
@@ -113,11 +113,11 @@ threeCol2listMat<- function(a = c("a","b","c","c"), b = c("a","b","b","b"), v = 
 #' @param startvec (vector): initial probability of being at any node.
 #' @param maxiters (int): maximum number of allowable iterations.
 #' @param thresh (float): threshold for L1 norm convergence.
-#' @return list of 'iter':number of iterations, 'diff': L1 norm of difference, 'vec': converged probability distribution vector
+#' @return list of 'iter':number of iterations, 'diff': L1 norm of difference, 'vec': converged probability distribution vector.
 #' @keywords random walk with restart
 #' @export
 #' @examples
-#' function(boolSparceMat, transmat, restart, query, startvec, maxiters, thresh)
+#' RWR(boolSparceMat=TRUE, transmat=Matrix(c(.4,.2,.6,.8),2,2), restart=.3, query=c(1,0), startvec=c(.5,.5), maxiters=10, thresh=0.001)
 
 RWR<- function(boolSparceMat, transmat, restart, query, startvec, maxiters, thresh){
 	library(Matrix)
@@ -200,7 +200,7 @@ DRaWR<- function(possetfile = "data/sample_inputs/test.setlist", unifile = "data
 	weight = 'weighted'
 	if(unweighted){ weight = 'unweighted' }
 	directed = 'directed'
-	if(undirected){ weight = 'undirected' }
+	if(undirected){ directed = 'undirected' }
 
 	# set up results output
 	restable = NULL
@@ -481,11 +481,12 @@ DRaWR<- function(possetfile = "data/sample_inputs/test.setlist", unifile = "data
 				}
 
 				# extract best features nodes
-				keep = rep(0,nnodes)
+				keep = rep(-1, nnodes)
 				evaltab = cbind(evaltab, keep)
 				ss = sort(as.numeric(evaltab[featnodes,"diff"]), decreasing=T, index.return = T)
 				sortedfeats = featnodes[ss$ix]
 				keepfeats = sortedfeats[1:nkeep]
+				evaltab[featnodes,"keep"] = 0
 				evaltab[keepfeats,"keep"] = 1
 
 				# keep all non-property edges

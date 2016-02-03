@@ -22,7 +22,8 @@ Enter the repository and install packages into a local library
 ```
 cd ./DRaWR/
 mkdir library
-R CMD INSTALL -l ./library packages/Matrix_1.2-2.tar.gz \
+R CMD INSTALL -l ./library packages/lattice_0.20-33.tar.gz\
+    packages/Matrix_1.2-2.tar.gz \
     packages/KernSmooth_2.23-15.tar.gz \
     packages/bitops_1.0-6.tar.gz \
     packages/caTools_1.17.1.tar.gz \
@@ -140,7 +141,7 @@ This file ending in '.rwr' contains information about each node in the network a
 * "test": 1 if node in the gene query set test set, 0 otherwise
 * "stage1": probability of being in the node from converged stage1 RWR
 * "diff": difference between "stage1" and "baseline"
-* "keep": 1 if the property node was kept for the stage two RWR, 0 otherwise
+* "keep": 1 if the property node was kept for the stage two RWR, 0 otherwise. -1 if node is a gene node
 * "stage2": probability of being in the node from converged stage2 RWR
 
 The file ending in '.base' contains the first 4 columns of the '.rwr' file and is used to accelerate the convergence of the RWRs.
