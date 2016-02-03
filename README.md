@@ -159,7 +159,7 @@ Simple example no cross validation
 DRaWR(possetfile = "packages/DRaWR/data/sample_inputs/test.setlist",
     unifile = "packages/DRaWR/data/sample_inputs/test.uni",
     networkfile = "packages/DRaWR/data/sample_inputs/test.edge",
-    outdir = "packages/DRaWR/data/sample_outputs/results_",
+    outdir = "packages/DRaWR/data/sample_outs/results_",
     restarts = c(.3), nfolds = 1, st2keep = 1,
     undirected = TRUE, unweighted = FALSE, normalize = "type",
     maxiters = 50, thresh = 0.000001,
@@ -209,7 +209,7 @@ Rscript -e ".libPaths(\"library\"); library(\"DRaWR\"); \
     DRaWR(possetfile = \"packages/DRaWR/data/sample_inputs/test.setlist\", \
     unifile = \"packages/DRaWR/data/sample_inputs/test.uni\", \
     networkfile = \"packages/DRaWR/data/sample_inputs/test.edge\", \
-    outdir = \"packages/DRaWR/data/sample_outputs/cli_results_\", \
+    outdir = \"packages/DRaWR/data/sample_outs/cli_results_\", \
     restarts = c(.3), nfolds = 1, st2keep = 1, \
     undirected = TRUE, unweighted = FALSE, normalize = \"type\", \
     maxiters = 50, thresh = 0.000001, \

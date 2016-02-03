@@ -2,6 +2,8 @@ Package: DRaWR
 Title: Discriminative Random Walk with Restart
 Version: 0.0.0.9000
 Authors@R: person("Charles", "Blatti", email = "blatti@illinois.edu", role = c("aut", "cre"))
+Author: Charles Blatti [aut, cre],
+Maintainer: Charles Blatti <blatti@illinois.edu>
 Description: We present DRaWR, a network-based method for ranking genes or
     properties related to a given gene set. Such related genes or properties are
     identified from among the nodes of a large, heterogeneous network of biological

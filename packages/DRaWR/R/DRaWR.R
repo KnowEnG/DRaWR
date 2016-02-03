@@ -3,13 +3,13 @@
 #' This function takes a three vectors of equal length (source nodes, target nodes, and edge weights) and return the adjacency matrix as a sparse Matrix.
 #' @param a (vector): vector of source node names.
 #' @param b (vector): vector of target node names.
-#' @param c (vector): vector of edge weights names.
+#' @param v (vector): vector of edge weights names.
 #' @return sparce Matrix.
 #' @keywords sparce matrix
+#' @import Matrix
 #' @export
 #' @examples
 #' threeCol2MaxMat(a = c("a","b","c","c"), b = c("a","b","b","b"), v = c(1,2,3,4))
-
 threeCol2MaxMat<- function(a = c("a","b","c","c"), b = c("a","b","b","b"), v = c(1,2,3,4)){
 	library(Matrix)
 	if(length(a)!=length(b) | length(a)!=length(v)){
@@ -40,7 +40,7 @@ threeCol2MaxMat<- function(a = c("a","b","c","c"), b = c("a","b","b","b"), v = c
 #' This function takes a three vectors of equal length (source nodes, target nodes, and edge weights) and return the adjacency matrix as a list of vectors.
 #' @param a (vector): vector of source node names.
 #' @param b (vector): vector of target node names.
-#' @param c (vector): vector of edge weights names.
+#' @param v (vector): vector of edge weights names.
 #' @return list of vectors matrix representation.
 #' @keywords sparce matrix
 #' @export
@@ -115,6 +115,7 @@ threeCol2listMat<- function(a = c("a","b","c","c"), b = c("a","b","b","b"), v = 
 #' @param thresh (float): threshold for L1 norm convergence.
 #' @return list of 'iter':number of iterations, 'diff': L1 norm of difference, 'vec': converged probability distribution vector.
 #' @keywords random walk with restart
+#' @import Matrix
 #' @export
 #' @examples
 #' RWR(boolSparceMat=TRUE, transmat=Matrix(c(.4,.2,.6,.8),2,2), restart=.3, query=c(1,0), startvec=c(.5,.5), maxiters=10, thresh=0.001)
@@ -181,10 +182,12 @@ RWR<- function(boolSparceMat, transmat, restart, query, startvec, maxiters, thre
 #' @import Matrix
 #' @importFrom Matrix colSums
 #' @import ROCR
+#' @importFrom ROCR prediction
+#' @importFrom ROCR performance
 #' @export
 #' @examples
-#' DRaWR(possetfile = "data/sample_inputs/test.setlist", unifile = "data/sample_inputs/test.uni", networkfile = "data/sample_inputs/test.edge", outdir = "data/sample_outputs/results_", restarts = c(.7), nfolds = 1, st2keep = 1, undirected = TRUE, unweighted = FALSE, normalize = "type", maxiters = 50, thresh = 0.0001, property_types = c("T1", "T2"), writepreds = 0)
-DRaWR<- function(possetfile = "data/sample_inputs/test.setlist", unifile = "data/sample_inputs/test.uni", networkfile = "data/sample_inputs/test.edge", outdir = "data/sample_outputs/results_", restarts = c(.7), nfolds = 1, st2keep = 1, undirected = TRUE, unweighted = FALSE, normalize = "type", maxiters = 50, thresh = 0.0001, property_types = c("allen_brain_atlas", "chip_binding", "gene_ontology", "motif_u5", "pfam_domain", "T1", "T2"), writepreds = 0){
+#' DRaWR(possetfile = "data/input_sample.setlist", unifile = "data/input_sample.uni", networkfile = "data/input_sample.edge", outdir = "data/output_", restarts = c(.7), nfolds = 1, st2keep = 1, undirected = TRUE, unweighted = FALSE, normalize = "type", maxiters = 50, thresh = 0.0001, property_types = c("T1", "T2"), writepreds = 0)
+DRaWR<- function(possetfile = "data/input_sample.setlist", unifile = "data/input_sample.uni", networkfile = "data/input_sample.edge", outdir = "data/output_", restarts = c(.7), nfolds = 1, st2keep = 1, undirected = TRUE, unweighted = FALSE, normalize = "type", maxiters = 50, thresh = 0.0001, property_types = c("allen_brain_atlas", "chip_binding", "gene_ontology", "motif_u5", "pfam_domain", "T1", "T2"), writepreds = 0){
 
 	library(Matrix)
 	library(ROCR)
@@ -197,10 +200,10 @@ DRaWR<- function(possetfile = "data/sample_inputs/test.setlist", unifile = "data
 	network = gsub(".txt","",network)
 	possetname = tail(unlist(strsplit(possetfile, "/")),1)
 	possetname = gsub(".txt","",possetname)
-	weight = 'weighted'
-	if(unweighted){ weight = 'unweighted' }
-	directed = 'directed'
-	if(undirected){ directed = 'undirected' }
+	weight = 'weight'
+	if(unweighted){ weight = 'unweight' }
+	directed = 'dir'
+	if(undirected){ directed = 'undir' }
 
 	# set up results output
 	restable = NULL
