@@ -11,7 +11,7 @@
 #' @examples
 #' threeCol2MaxMat(a = c("a","b","c","c"), b = c("a","b","b","b"), v = c(1,2,3,4))
 threeCol2MaxMat<- function(a = c("a","b","c","c"), b = c("a","b","b","b"), v = c(1,2,3,4)){
-	library(Matrix)
+#	library(Matrix)
 	if(length(a)!=length(b) | length(a)!=length(v)){
 		return(-1)
 	}
@@ -118,10 +118,10 @@ threeCol2listMat<- function(a = c("a","b","c","c"), b = c("a","b","b","b"), v = 
 #' @import Matrix
 #' @export
 #' @examples
-#' RWR(boolSparceMat=TRUE, transmat=Matrix(c(.4,.2,.6,.8),2,2), restart=.3, query=c(1,0), startvec=c(.5,.5), maxiters=10, thresh=0.001)
-
+#' RWR(boolSparceMat=TRUE, transmat=transmat, restart=.3, query=c(rep(0.1,10),rep(0,5)),
+#'		startvec=rep(1/15,15), maxiters=10, thresh=0.001)
 RWR<- function(boolSparceMat, transmat, restart, query, startvec, maxiters, thresh){
-	library(Matrix)
+#	library(Matrix)
 	damping = 1-restart
 	query = query / sum(query)
 	vec = startvec
@@ -181,16 +181,20 @@ RWR<- function(boolSparceMat, transmat, restart, query, startvec, maxiters, thre
 #' @keywords random walk with restart
 #' @import Matrix
 #' @importFrom Matrix colSums
-#' @import ROCR
 #' @importFrom ROCR prediction
 #' @importFrom ROCR performance
 #' @export
 #' @examples
-#' DRaWR(possetfile = "data/input_sample.setlist", unifile = "data/input_sample.uni", networkfile = "data/input_sample.edge", outdir = "data/output_", restarts = c(.7), nfolds = 1, st2keep = 1, undirected = TRUE, unweighted = FALSE, normalize = "type", maxiters = 50, thresh = 0.0001, property_types = c("T1", "T2"), writepreds = 0)
-DRaWR<- function(possetfile = "data/input_sample.setlist", unifile = "data/input_sample.uni", networkfile = "data/input_sample.edge", outdir = "data/output_", restarts = c(.7), nfolds = 1, st2keep = 1, undirected = TRUE, unweighted = FALSE, normalize = "type", maxiters = 50, thresh = 0.0001, property_types = c("allen_brain_atlas", "chip_binding", "gene_ontology", "motif_u5", "pfam_domain", "T1", "T2"), writepreds = 0){
+#' DRaWR(possetfile = system.file("extdata", "sample.setlist", package="DRaWR"),
+#'		unifile = system.file("extdata", "sample.uni", package="DRaWR"),
+#'		networkfile = system.file("extdata", "sample.edge", package="DRaWR"),
+#'		outdir = "output_", restarts = c(.7), nfolds = 1, st2keep = 1,
+#'		undirected = TRUE, unweighted = FALSE, normalize = "type", maxiters = 50,
+#'		thresh = 0.0001, property_types = c("T1", "T2"), writepreds = 0)
+DRaWR<- function(possetfile = "extdata/sample.setlist", unifile = "extdata/sample.uni", networkfile = "extdata/sample.edge", outdir = "output_", restarts = c(.7), nfolds = 1, st2keep = 1, undirected = TRUE, unweighted = FALSE, normalize = "type", maxiters = 50, thresh = 0.0001, property_types = c("allen_brain_atlas", "chip_binding", "gene_ontology", "motif_u5", "pfam_domain", "T1", "T2"), writepreds = 0){
 
-	library(Matrix)
-	library(ROCR)
+#	library(Matrix)
+#	library(ROCR)
 
 	# set up results values
 	uni = tail(unlist(strsplit(unifile, "/")),1)
@@ -583,3 +587,9 @@ DRaWR<- function(possetfile = "data/input_sample.setlist", unifile = "data/input
 } #end function
 
 
+#' Sample transition matrix.
+#'
+#' A Matrix containing tthe normalized transition matrix from the test network
+#'
+#' @format a Matrix containing the normalized transition matrix from the test network.
+"transmat"

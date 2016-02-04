@@ -4,12 +4,10 @@
 \alias{DRaWR}
 \title{DRaWR}
 \usage{
-DRaWR(possetfile = "data/sample_inputs/test.setlist",
-  unifile = "data/sample_inputs/test.uni",
-  networkfile = "data/sample_inputs/test.edge",
-  outdir = "data/sample_outputs/results_", restarts = c(0.7), nfolds = 1,
-  st2keep = 1, undirected = TRUE, unweighted = FALSE,
-  normalize = "type", maxiters = 50, thresh = 1e-04,
+DRaWR(possetfile = "extdata/sample.setlist", unifile = "extdata/sample.uni",
+  networkfile = "extdata/sample.edge", outdir = "output_",
+  restarts = c(0.7), nfolds = 1, st2keep = 1, undirected = TRUE,
+  unweighted = FALSE, normalize = "type", maxiters = 50, thresh = 1e-04,
   property_types = c("allen_brain_atlas", "chip_binding", "gene_ontology",
   "motif_u5", "pfam_domain", "T1", "T2"), writepreds = 0)
 }
@@ -46,7 +44,12 @@ DRaWR(possetfile = "data/sample_inputs/test.setlist",
 This function runs the DRaWR two stage random walk with restart method.
 }
 \examples{
-DRaWR(possetfile = "data/sample_inputs/test.setlist", unifile = "data/sample_inputs/test.uni", networkfile = "data/sample_inputs/test.edge", outdir = "data/sample_outputs/results_", restarts = c(.7), nfolds = 1, st2keep = 1, undirected = TRUE, unweighted = FALSE, normalize = "type", maxiters = 50, thresh = 0.0001, property_types = c("T1", "T2"), writepreds = 0)
+DRaWR(possetfile = system.file("extdata", "sample.setlist", package="DRaWR"),
+	unifile = system.file("extdata", "sample.uni", package="DRaWR"),
+	networkfile = system.file("extdata", "sample.edge", package="DRaWR"),
+	outdir = "output_", restarts = c(.7), nfolds = 1, st2keep = 1,
+	undirected = TRUE, unweighted = FALSE, normalize = "type", maxiters = 50,
+	thresh = 0.0001, property_types = c("T1", "T2"), writepreds = 0)
 }
 \keyword{random}
 \keyword{restart}

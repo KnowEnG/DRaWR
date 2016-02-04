@@ -12,10 +12,10 @@ threeCol2MaxMat(a = c("a", "b", "c", "c"), b = c("a", "b", "b", "b"),
 
 \item{b}{(vector): vector of target node names.}
 
-\item{c}{(vector): vector of edge weights names.}
+\item{v}{(vector): vector of edge weights names.}
 }
 \value{
-sparce Matrix
+sparce Matrix.
 }
 \description{
 This function takes a three vectors of equal length (source nodes, target nodes, and edge weights) and return the adjacency matrix as a sparse Matrix.

@@ -12,16 +12,16 @@ threeCol2listMat(a = c("a", "b", "c", "c"), b = c("a", "b", "b", "b"),
 
 \item{b}{(vector): vector of target node names.}
 
-\item{c}{(vector): vector of edge weights names.}
+\item{v}{(vector): vector of edge weights names.}
 }
 \value{
-list of vectors matrix representation
+list of vectors matrix representation.
 }
 \description{
 This function takes a three vectors of equal length (source nodes, target nodes, and edge weights) and return the adjacency matrix as a list of vectors.
 }
 \examples{
-threeCol2listMat(a = c("a","b","c","c"), b = c("a","b","b","b"), v = c(1,2,3,4), sym = 0)
+threeCol2listMat(a = c("a","b","c","c"), b = c("a","b","b","b"), v = c(1,2,3,4))
 }
 \keyword{matrix}
 \keyword{sparce}

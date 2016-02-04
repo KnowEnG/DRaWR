@@ -22,13 +22,14 @@ RWR(boolSparceMat, transmat, restart, query, startvec, maxiters, thresh)
 \item{thresh}{(float): threshold for L1 norm convergence.}
 }
 \value{
-list of 'iter':number of iterations, 'diff': L1 norm of difference, 'vec': converged probability distribution vector
+list of 'iter':number of iterations, 'diff': L1 norm of difference, 'vec': converged probability distribution vector.
 }
 \description{
 This function runs a random walk with restart using two supported matrix representations.
 }
 \examples{
-function(boolSparceMat, transmat, restart, query, startvec, maxiters, thresh)
+RWR(boolSparceMat=TRUE, transmat=transmat, restart=.3, query=c(rep(0.1,10),rep(0,5)),
+	startvec=rep(1/15,15), maxiters=10, thresh=0.001)
 }
 \keyword{random}
 \keyword{restart}
