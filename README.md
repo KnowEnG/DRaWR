@@ -1,19 +1,19 @@
 # *DRaWR* - Discriminative Random Walk with Restart
-Charles Blatti [blatti@illinois.edu] and Saurabh Sinha
-KnowEnG BD2K Center of Excellence
-University of Illinois Urbana-Champaign
+Charles Blatti [blatti@illinois.edu] and Saurabh Sinha  
+KnowEnG BD2K Center of Excellence  
+University of Illinois Urbana-Champaign  
 
 ## Table of Contents
 1. [Motivation](#motivation)
 2. [Installation](#installation)
 3. [Tutorial](#tutorial)
-    A. [Gene Sets](#gene sets)
-    B. [Heterogeneous Network](#heterogeneous network)
-    C. [Example Runs](#example runs)
+    1. [Gene Sets](#gene-sets)
+    2. [Heterogeneous Network](#heterogeneous-network)
+    3. [Example Runs](#example-runs)
 4. [Resources](#resources)
-    A. [Function Parameters](#function_parameters)
-    B. [Input Formats](#input formats)
-    C. [Output Formats](#output formats)
+    1. [Function Parameters](#function-parameters)
+    2. [Input Formats](#input-formats)
+    3. [Output Formats](#output-formats)
 
 ## Motivation
 
@@ -23,7 +23,7 @@ We present DRaWR, a network-based method for ranking genes or properties related
 
 ![Method Overview](images/DRaWR_method.small.png)
 
-[Return to TOC](#table of contents)
+[Return to TOC](#table-of-contents)
 
 ## Installation
 
