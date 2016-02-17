@@ -3,6 +3,11 @@
 #### KnowEnG BD2K Center of Excellence
 #### University of Illinois Urbana-Champaign
 
+# Table of Contents
+1. [Motivation](#motivation)
+2. [Installation](#installation)
+3. [Running](#running)
+
 # Motivation
 
 Analysis of co-expressed gene sets typically involves testing for enrichment of different “properties” such as biological processes, pathways, transcription factor binding, etc., one property at a time. This approach ignores any known relationships among the properties or genes themselves. Previous work has sought to exploit these relationships by building biological networks that combine multiple types of gene-gene or gene-property relationships, and performing network analysis to identify other genes and properties most relevant to a given gene set. However, these existing network-based method often collapse information about individual property annotations to create simplified, homogeneous networks.
@@ -10,6 +15,8 @@ Analysis of co-expressed gene sets typically involves testing for enrichment of 
 We present DRaWR, a network-based method for ranking genes or properties related to a given gene set. Such related genes or properties are identified from among the nodes of a large, heterogeneous network of biological information. Our method involves a random walk with restarts, performed on an initial network with multiple node and edge types, preserving more of the original, specific property information than current methods that operate on homogeneous networks. In this first stage of our algorithm, we find the properties that are the most relevant to the given gene set and extract a subnetwork of the original network, comprising only the relevant properties. We then rerank genes by their similarity to the given gene set, based on a second random walk with restarts, performed on the above subnetwork.
 
 ![Method Overview](images/DRaWR_method.small.png)
+
+
 
 # Installation
 
