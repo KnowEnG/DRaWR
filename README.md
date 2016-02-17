@@ -7,13 +7,13 @@ University of Illinois Urbana-Champaign
 1. [Motivation](#motivation)
 2. [Installation](#installation)
 3. [Tutorial](#tutorial)
-    A. [Gene Sets](#gene)
-    B. [Heterogeneous Network](#heterogeneous)
-    C. [Example Runs](#example)
+    A. [Gene Sets](#gene sets)
+    B. [Heterogeneous Network](#heterogeneous network)
+    C. [Example Runs](#example runs)
 4. [Resources](#resources)
-    A. [Function Parameters](#function)
-    B. [Input Formats](#input)
-    C. [Output Formats](#output)
+    A. [Function Parameters](#function_parameters)
+    B. [Input Formats](#input formats)
+    C. [Output Formats](#output formats)
 
 ## Motivation
 
@@ -23,7 +23,7 @@ We present DRaWR, a network-based method for ranking genes or properties related
 
 ![Method Overview](images/DRaWR_method.small.png)
 
-[Return to TOC](#table)
+[Return to TOC](#table of contents)
 
 ## Installation
 
