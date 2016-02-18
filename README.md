@@ -225,26 +225,34 @@ Sorting this table by 'stage2' in descending order shows the most important node
 
 There are many other [function parameters](#function-parameters) that can be modified to run DRaWR and more details for these parameters are found below.
 
+[Return to TOC](#table-of-contents)
+
 ## Resources
 
 ### Function Parameters
+#### relating to input files
 | Name           | Type    | Default  | Description                                                                                                                                                                                                                                                                             |
 |----------------|---------|----------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-#### relating to input files
 | possetfile     | string  | required | location of file containing relative location of gene sets to test.                                                                                                                                                                                                                     |
 | unifile        | string  | required | location of file listing gene universe.                                                                                                                                                                                                                                                 |
 | networkfile    | string  | required | location of file containing network contents.                                                                                                                                                                                                                                           |
 #### relating to output files
+| Name           | Type    | Default  | Description                                                                                                                                                                                                                                                                             |
+|----------------|---------|----------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | outdir         | string  | required | prefix of location of file to write performance results (optionally prediction results).                                                                                                                                                                                                |
 | writepreds     | boolean | FALSE    | write predictions out to a file.                                                                                                                                                                                                                                                        |
 | nfolds         | int     | 1        | number of folds for cross validation, Default is 1, no cross-validation.                                                                                                                                                                                                                |
 #### relating to network processing
+| Name           | Type    | Default  | Description                                                                                                                                                                                                                                                                             |
+|----------------|---------|----------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | undirected     | bool    | TRUE     | boolean to make network undirected.                                                                                                                                                                                                                                                     |
 | unweighted     | bool    | FALSE    | boolean to make network unweighted.                                                                                                                                                                                                                                                     |
 | normalize      | string  | "type"   | type or "none" normalization method.                                                                                                                                                                                                                                                    |
 | property_types | vector  | required | vector containing *ALL* names of property->gene (PG) edge_types. May contain PG edge_types that are not in the given network, but should not contain gene<->gene edge_types. Default is c("allen_brain_atlas", "chip_binding", "gene_ontology", "motif_u5", "pfam_domain", "T1", "T2"). |
 | st2keep        | int     | 1        | number of property nodes to keep in second stage for each property type. To skip the second stage of DRaWR can set st2keep to 0.                                                                                                                                                        |
 #### relating to random walks
+| Name           | Type    | Default  | Description                                                                                                                                                                                                                                                                             |
+|----------------|---------|----------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | restarts       | vector  | c(0.7)   | vector of restart values to test. Must be between 0 and 1.                                                                                                                                                                                                                              |
 | maxiters       | int     | 50       | maximum number of allowable iterations.                                                                                                                                                                                                                                                 |
 | thresh         | float   | 0.0001   | threshold for L1 norm convergence.                                                                                                                                                                                                                                                      |
@@ -332,3 +340,4 @@ This file ending in '.rwr' contains information about each node in the network a
 
 The file ending in '.base' contains the first 4 columns of the '.rwr' file and is used to accelerate the convergence of the RWRs.
 
+[Return to TOC](#table-of-contents)
