@@ -80,18 +80,18 @@ If the genes have distinct weights (e.g. different expression fold changes), a s
 
 For example:
 ```
-FBgn0041156	5.2
-FBgn0041186	1.3
-FBgn0010105	2.6
+FBgn0041156	| 5.2
+FBgn0041186	| 1.3
+FBgn0010105	| 2.6
 ```
 
 We also must create a file that specifies the universe of genes we wish to rank that our query gene sets are a subset of.  Typically, this will be all of the genes on the species of interest. This is done with the same [gene set file](#gene-set-file) format above.  
 For example, the *Drosophila* Universe File, [gene_sets/universes/dmel.ids.uni.txt](gene_sets/universes/dmel.ids.uni.txt):
 ```
-FBgn0000032	1
-FBgn0000289	1
-FBgn0008636	1
-FBgn0040505	1
+FBgn0000032	| 1
+FBgn0000289	| 1
+FBgn0008636	| 1
+FBgn0040505	| 1
 ...
 ```
 
@@ -110,24 +110,24 @@ We must also assemble a heterogeneous network before starting our DRaWR analysis
 For example, from the hetergeneous drosophila network, [networks/dmel_cdhmw.names.edge](networks/dmel_cdhmw.names.edge), there are weighted gene<->gene (GG) edges representing protein sequence similarity.  The edge type is 'homol' and the larger weights indicate greater similarity.  
 ```
 ...
-FBgn0040765	FBgn0000289	6.14	homol
-FBgn0041105	FBgn0000289	2.32	homol
-FBgn0042205	FBgn0000289	8.2	    homol
-FBgn0043364	FBgn0000289	7.65	homol
+FBgn0040765	| FBgn0000289	| 6.14	| homol
+FBgn0041105	| FBgn0000289	| 2.32	| homol
+FBgn0042205	| FBgn0000289	| 8.2	|     homol
+FBgn0043364	| FBgn0000289	| 7.65	| homol
 ...
 ```
 
 To represent edges between a property node and a gene node, the property node must be listed as node 1. The second stage of DRaWR will select the most relavent property nodes based on the query genes. In the hetergeneous drosophila network, [networks/dmel_cdhmw.names.edge](networks/dmel_cdhmw.names.edge),, there are three types of property<->gene (PG) edges, each connecting multiple property nodes to their related genes.
 ```
 ...
-mt_fkh_u5_gc    	FBgn0040717	3.17	motif_u5
-mt_grh_u5_gc    	FBgn0040717	2.67	motif_u5
+mt_fkh_u5_gc    	| FBgn0040717	| 3.17	| motif_u5
+mt_grh_u5_gc    	| FBgn0040717	| 2.67	| motif_u5
 ...
-Pdom_Rad17	        FBgn0032244	5.26	pfam_domain
-Pdom_Rep_fac_C	    FBgn0032244	8.2	    pfam_domain
+Pdom_Rad17	|         FBgn0032244	| 5.26	| pfam_domain
+Pdom_Rep_fac_C	|     FBgn0032244	| 8.2	|     pfam_domain
 ...
-chip_CAD_Bchip_s5	FBgn0033062	2.59	chip_binding
-chip_EVE_Mseq_s14	FBgn0033062	2.66	chip_binding
+chip_CAD_Bchip_s5	| FBgn0033062	| 2.59	| chip_binding
+chip_EVE_Mseq_s14	| FBgn0033062	| 2.66	| chip_binding
 ...
 ```
 
@@ -227,31 +227,31 @@ There are many other [function parameters](#function-parameters) that can be mod
 
 [Return to TOC](#table-of-contents)
 
-## Resources
+## DRaWR Resources
 
 ### Function Parameters
 #### relating to input files
-| Name           | Type    | Default  | Description                                                                                                                                                                                                                                                                             |
+| Parameter      | Type    | Default  | Description                                                                                                                                                                                                                                                                             |
 |----------------|---------|----------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | possetfile     | string  | required | location of file containing relative location of gene sets to test.                                                                                                                                                                                                                     |
 | unifile        | string  | required | location of file listing gene universe.                                                                                                                                                                                                                                                 |
 | networkfile    | string  | required | location of file containing network contents.                                                                                                                                                                                                                                           |
 #### relating to output files
-| Name           | Type    | Default  | Description                                                                                                                                                                                                                                                                             |
+| Parameter      | Type    | Default  | Description                                                                                                                                                                                                                                                                             |
 |----------------|---------|----------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | outdir         | string  | required | prefix of location of file to write performance results (optionally prediction results).                                                                                                                                                                                                |
 | writepreds     | boolean | FALSE    | write predictions out to a file.                                                                                                                                                                                                                                                        |
 | nfolds         | int     | 1        | number of folds for cross validation, Default is 1, no cross-validation.                                                                                                                                                                                                                |
 #### relating to network processing
-| Name           | Type    | Default  | Description                                                                                                                                                                                                                                                                             |
+| Parameter      | Type    | Default  | Description                                                                                                                                                                                                                                                                             |
 |----------------|---------|----------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | undirected     | bool    | TRUE     | boolean to make network undirected.                                                                                                                                                                                                                                                     |
 | unweighted     | bool    | FALSE    | boolean to make network unweighted.                                                                                                                                                                                                                                                     |
 | normalize      | string  | "type"   | type or "none" normalization method.                                                                                                                                                                                                                                                    |
-| property_types | vector  | required | vector containing *ALL* names of property->gene (PG) edge_types. May contain PG edge_types that are not in the given network, but should not contain gene<->gene edge_types. Default is c("allen_brain_atlas", "chip_binding", "gene_ontology", "motif_u5", "pfam_domain", "T1", "T2"). |
+| property_types | vector  | required | vector containing *ALL* names of property->gene (PG) edge_types. May contain PG edge_types that are not in the given network, but should not contain gene<->gene (GG) edge_types. Default is c("allen_brain_atlas", "chip_binding", "gene_ontology", "motif_u5", "pfam_domain", "T1", "T2"). |
 | st2keep        | int     | 1        | number of property nodes to keep in second stage for each property type. To skip the second stage of DRaWR can set st2keep to 0.                                                                                                                                                        |
 #### relating to random walks
-| Name           | Type    | Default  | Description                                                                                                                                                                                                                                                                             |
+| Parameter      | Type    | Default  | Description                                                                                                                                                                                                                                                                             |
 |----------------|---------|----------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | restarts       | vector  | c(0.7)   | vector of restart values to test. Must be between 0 and 1.                                                                                                                                                                                                                              |
 | maxiters       | int     | 50       | maximum number of allowable iterations.                                                                                                                                                                                                                                                 |
@@ -260,35 +260,43 @@ There are many other [function parameters](#function-parameters) that can be mod
 
 ### Input File Formats
 #### Network Edge File
-The network edge file is expected to be a 4 column, tab separated file. Each row represents and edge in the network and contains the values for:
-*col1: node1 (string)
-*col2: node2 (string)
-*col3: edge_weight (float)
-*col4: edge_type (string)
+The network edge file is expected to be a 4 column, tab separated file. Each row represents an edge in the network and contains the values for:
+
+| Columms       | Type      | Description                                                                                                       |
+|---------------|-----------|-------------------------------------------------------------------------------------------------------------------|
+| node1         | string    | String name of node1.  If PG edge must be the property node name.                                                 |
+| node2         | string    | String name of node2, always a gene node.                                                                         |
+| edge_weight   | float     | Positive value of weight of edge where larger numbers mean stronger relationships.                                |
+| edge_type     | string    | String name for the type of the edge. PG edge types should be listed in the 'property_types' argument of DRaWR(). |
 
 For edges between a property node and a gene node, the property node must be listed as node 1.  The order of the nodes does not matter for gene-gene edges.  The edge weights must be positive with large values meaning stronger relationships.  The second stage of DRaWR is intended to limit the property nodes from many different property->gene (PG) edge_types.  The number of gene<->gene (GG) edge_types should be limited.  By default the network edge file will be converted to an undirected, normalized by edge_type adjacency matrix with the edge weights taken as the maximum if there is repetition.
 
 Example network edge file:
 ```
-G1	G6	0.76	typeGG
-G2	G1	0.41	typeGG
-G2	G7	0.73	typeGG
-G4	G5	0.89	typeGG
-P1	G2	0.57	typePG.1
-P1	G6	0.30	typePG.1
-P2	G1	0.07	typePG.1
-P2	G4	0.89	typePG.1
-P3	G3	0.66	typePG.1
-P3	G6	0.80	typePG.1
-P4	G4	0.24	typePG.2
-P4	G1	0.74	typePG.2
-P5	G5	0.20	typePG.2
-P5	G2	0.95	typePG.2
-P5	G7	0.92	typePG.2
+G1	| G6	| 0.76	| typeGG
+G2	| G1	| 0.41	| typeGG
+G2	| G7	| 0.73	| typeGG
+G4	| G5	| 0.89	| typeGG
+P1	| G2	| 0.57	| typePG.1
+P1	| G6	| 0.30	| typePG.1
+P2	| G1	| 0.07	| typePG.1
+P2	| G4	| 0.89	| typePG.1
+P3	| G3	| 0.66	| typePG.1
+P3	| G6	| 0.80	| typePG.1
+P4	| G4	| 0.24	| typePG.2
+P4	| G1	| 0.74	| typePG.2
+P5	| G5	| 0.20	| typePG.2
+P5	| G2	| 0.95	| typePG.2
+P5	| G7	| 0.92	| typePG.2
 ```
 
 #### Gene Set File
-The query gene set files or gene universe files should one node name listed on each row.  If the gene nodes have distinct weights, a second column (separated by a tab) can be added.  Node weights must be positive with larger values meaning stronger evidence.
+The query gene set files or gene universe files should have one node name listed on each row.  If the gene nodes have distinct weights, a second column (separated by a tab) can be added.  Node weights must be positive with larger values meaning stronger evidence.
+
+| Columns   | Type      | Description                                                                                               |
+|-----------|-----------|-----------------------------------------------------------------------------------------------------------|
+| node      | string    | String name of gene.  Must match network file.                                                            |
+| weight    | string    | Optional. Positive value of weight of node where larger numbers mean stronger evidence of gene in set.    |
 
 Example gene set file:
 ```
@@ -312,31 +320,43 @@ Example gene set list:
 
 ### Output File Formats
 #### Statistics File
-This file ending in '.stats' is produced to analyzing the performance results.
+This file ending in '.stats' is produced to analyze the performance results. The rows report the size of the restart set ("ntrain"), iterations for the random walk to converge ("rwr_iters"), and AUROC ("aucval") for every stage ("stage1") of DRaWR, fold ("iter") of cross validation, RWR restart parameter ("restart") setting, and query gene set ("posset").
 
-For every:
-* stage ("stage1") of DRaWR
-* fold ("iter") of cross validation
-* RWR restart parameter ("restart") setting
-* query gene set ("posset")
-
-this file outputs on every line the settings of the DRaWR run as well as the:
-* AUROC evaluation metric ("aucval")
-* number of RWR interations ("rwr_iters")
-* number of training examples ("ntrain")
+| Columns   | Type      | Description                                                                                       |
+|-----------|-----------|---------------------------------------------------------------------------------------------------|
+| network   | string	| Name of heterogeneous network                                                                     |
+| direct	| string	| Whether network was left directed ('direct') or made undirected (''undir')                        |
+| weight	| string	| If the network was left weighted ('weight') or force to be unweighted ('unweight')                |
+| normalize	| string	| If the network was normalized by edge type ('type') or not ('none')                               |
+| uni	    | string	| Name of the gene universe file                                                                    |
+| restart	| float 	| Random walk restart parameter                                                                     |
+| maxiters	| int   	| Random walk maxiters parameter                                                                    |
+| thresh	| float 	| Random walk covergence threshold parameter                                                        |
+| st2keep	| int   	| Number of property nodes to keep in second stage for each property<->gene (PG) edge type          |
+| posset	| string	| Name of query gene set file                                                                       |
+| nfolds	| int   	| Total number of folds specified in the run                                                        |
+| iter  	| int   	| Number of the fold of the current result                                                          |
+| stage	    | string	| Stage of DRaWR of the current result. Can be 'baseline', 'stage1', 'diff', or 'stage2'            |
+| aucval	| float 	| AUROC from ranking the left out genes with the RWR probability distribution of the current stage  |
+| rwr_iters	| int   	| Number of iterations for the RWR to converge                                                      |
+| ntrain	| int   	| Number of genes in the RWR restart set                                                            |
 
 #### Prediction File
 This file ending in '.rwr' contains information about each node in the network after running DRaWR.  This file is only produced if writepreds = TRUE.  There is one row for each node in the network, and the columns are:
-* "node": the name of that node
-* "type": the type of that node, -1 if node is a gene node
-* "universe": 1 if node in gene universe set, 0 otherwise
-* "baseline": probability of being in the node from converged baseline RWR
-* "train": 1 if node in the gene query set training set, 0 otherwise
-* "test": 1 if node in the gene query set test set, 0 otherwise
-* "stage1": probability of being in the node from converged stage1 RWR
-* "diff": difference between "stage1" and "baseline"
-* "keep": 1 if the property node was kept for the stage two RWR, 0 otherwise. -1 if node is a gene node
-* "stage2": probability of being in the node from converged stage2 RWR
+
+| Columns   | Type      | Description                                                                                   |
+|-----------|-----------|-----------------------------------------------------------------------------------------------|
+| node      | string    | The name of that node                                                                         |
+| type      | string    | The type of that node. -1 if node is a gene node                                              |
+| universe  | int       | 1 if node in gene universe set. 0 otherwise                                                   |
+| baseline  | float     | probability of being in the node from converged baseline RWR                                  |
+| train     | int       | 1 if node in the gene query set training set, 0 otherwise                                     |
+| test      | int       | 1 if node in the gene query set test set, 0 otherwise                                         |
+| stage1    | float     | probability of being in the node from converged stage1 RWR                                    |
+| diff      | float     | difference between "stage1" and "baseline"                                                    |
+| keep      | int       | 1 if the property node was kept for the stage2 RWR, 0 otherwise. -1 if node is a gene node    |
+| stage2    | float     | probability of being in the node from converged stage2 RWR                                    |
+
 
 The file ending in '.base' contains the first 4 columns of the '.rwr' file and is used to accelerate the convergence of the RWRs.
 
