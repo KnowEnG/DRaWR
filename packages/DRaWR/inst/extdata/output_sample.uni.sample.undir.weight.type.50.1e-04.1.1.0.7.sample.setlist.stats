@@ -1,5 +1,0 @@
-network	direct	weight	normalize	uni	restart	maxiters	thresh	st2keep	posset	nfolds	iter	stage	aucval	rwr_iters	ntrain
-sample	undir	weight	type	sample.uni	0.7	50	1e-04	1	sample.query	1	1	baseline	0.167	0	5
-sample	undir	weight	type	sample.uni	0.7	50	1e-04	1	sample.query	1	1	stage1	1	8	2
-sample	undir	weight	type	sample.uni	0.7	50	1e-04	1	sample.query	1	1	diff	1	0	2
-sample	undir	weight	type	sample.uni	0.7	50	1e-04	1	sample.query	1	1	stage2	1	7	2
