@@ -9,7 +9,7 @@ RWR(boolSparceMat, transmat, restart, query, startvec, maxiters, thresh)
 \arguments{
 \item{boolSparceMat}{(bool): Boolean to indicate sparce Matrix or list matrix.}
 
-\item{transmat}{(sparce Matrix / list matrix): transition probabilites.}
+\item{transmat}{(sparce Matrix / list matrix): transition probabilities.}
 
 \item{restart}{(float): probability of restart.}
 

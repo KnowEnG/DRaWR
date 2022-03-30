@@ -9,7 +9,7 @@
 transmat
 }
 \description{
-A Matrix containing tthe normalized transition matrix from the test network
+A Matrix containing the normalized transition matrix from the test network
 }
 \keyword{datasets}
 
