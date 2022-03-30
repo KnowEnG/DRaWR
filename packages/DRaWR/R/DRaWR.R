@@ -188,7 +188,7 @@ RWR<- function(boolSparceMat, transmat, restart, query, startvec, maxiters, thre
 #' DRaWR(possetfile = system.file("extdata", "sample.setlist", package="DRaWR"),
 #'		unifile = system.file("extdata", "sample.uni", package="DRaWR"),
 #'		networkfile = system.file("extdata", "sample.edge", package="DRaWR"),
-#'		outdir = "output_", restarts = c(.7), nfolds = 1, st2keep = 1,
+#'		outdir = "exampleRun_", restarts = c(.7), nfolds = 1, st2keep = 1,
 #'		undirected = TRUE, unweighted = FALSE, normalize = "type", maxiters = 50,
 #'		thresh = 0.0001, property_types = c("T1", "T2"), writepreds = 0)
 DRaWR<- function(possetfile = "extdata/sample.setlist", unifile = "extdata/sample.uni", networkfile = "extdata/sample.edge", outdir = "output_", restarts = c(.7), nfolds = 1, st2keep = 1, undirected = TRUE, unweighted = FALSE, normalize = "type", maxiters = 50, thresh = 0.0001, property_types = c("allen_brain_atlas", "chip_binding", "gene_ontology", "motif_u5", "pfam_domain", "T1", "T2"), writepreds = 0){
@@ -218,7 +218,7 @@ DRaWR<- function(possetfile = "extdata/sample.setlist", unifile = "extdata/sampl
 	}
 	write.table(restable, resfile, quote=F, sep="\t", row.names=F)
 	show(resfile)
-
+	
 	# read in edge file
 	show('Reading Original File')
 	edges = read.table(networkfile)
@@ -583,7 +583,15 @@ DRaWR<- function(possetfile = "extdata/sample.setlist", unifile = "extdata/sampl
 
 			} #end iter
 		} #end queryset
+
+		if(outdir == "exampleRun_"){
+			unlink(basefile)
+		}	
 	} #end restart
+
+	if(outdir == "exampleRun_"){
+		unlink(resfile)
+	}	
 } #end function
 
 
