@@ -1,6 +1,6 @@
 Package: DRaWR
 Title: Discriminative Random Walk with Restart
-Version: 1.0.2
+Version: 1.0.3
 Authors@R: person("Charles", "Blatti", email = "blatti@illinois.edu", role = c("aut", "cre"))
 Author: Charles Blatti [aut, cre]
 Maintainer: Charles Blatti <blatti@illinois.edu>
@@ -15,12 +15,10 @@ Description: We present DRaWR, a network-based method for ranking genes or
     subnetwork of the original network, comprising only the relevant properties. We
     then rerank genes by their similarity to the given gene set, based on a second
     random walk with restarts, performed on the above subnetwork.
-Depends:
-    R (>= 3.0)
+Depends: R (>= 3.0)
 License: GPL-2
 LazyData: true
-Imports:
-    Matrix,
-    ROCR,
-    methods
+Imports: Matrix, ROCR, methods
 RoxygenNote: 5.0.1.9000
+NeedsCompilation: no
+Packaged: 2022-03-10 22:12:26 UTC; root
